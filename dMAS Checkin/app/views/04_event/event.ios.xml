@@ -1,0 +1,80 @@
+<Page 
+  xmlns="http://schemas.nativescript.org/tns.xsd" 
+  xmlns:Card="nativescript-cardview"
+  xmlns:Barcode="nativescript-barcodescanner"
+  ios:actionBarHidden="true" 
+  actionBarHidden="true"
+  navigatingTo="navigatingTo"
+>
+  <GridLayout rows="49, 45, *, 125, 55">
+    <!-- Action Bar -->
+    <GridLayout row="0" columns="15, 70, *, 70, 15" backgroundColor="#aabe19" borderBottomWidth="1" borderBottomColor="#919b4f">
+      <GridLayout row="0" col="1" tap="goBack">
+        <StackLayout orientation="horizontal" verticalAlignment="center" className="actionbar-control">
+          <Label text="&#xf104;" className="fa" marginRight="10" />
+          <Label text="Events" />
+        </StackLayout>
+      </GridLayout>
+      <StackLayout row="0" col="2" verticalAlignment="center" horizontalAlignment="center">
+        <Label text="Scan" className="actionbar-title" />
+      </StackLayout>
+    </GridLayout>
+    <!-- Event Info Bar -->
+    <GridLayout row="1" padding="0 15" backgroundColor="#4a4a4a" color="white">
+      <StackLayout orientation="horizontal" verticalAlignment="center" className="event-bar">
+        <Label text="{{ event.name }}" className="event-bar-name" />
+        <Label text="&bull;" margin="0 3" />
+        <Label text="{{ event.starts_at | startDate }}" />
+      </StackLayout>
+    </GridLayout>
+    <!-- Scan Button -->
+    <GridLayout row="2">
+      <Button visibility="{{ isScanAvailable ? 'visible' : 'collapsed' }}" tap="{{ checkinUser }}" className="fa btn btn-outline btn-dotted" text="&#xf029;&nbsp;&nbsp;Scan code" margin="0" width="250" height="90" />
+    </GridLayout>
+    <!-- Checkin Statistic -->
+    <GridLayout row="3" rows="25, *, 25" columns="*, *" backgroundColor="white">
+      <GridLayout row="1" col="0">
+        <StackLayout orientation="vertical" verticalAlignment="center">
+          <Label text="{{ current_user_checkin | number }}" height="50" marginBottom="5" className="counter-value" />
+          <Label text="THIS USER" className="counter-title" />
+        </StackLayout>
+      </GridLayout>
+      <GridLayout row="1" col="1" class="counter-border">
+        <StackLayout orientation="vertical" verticalAlignment="center">
+          <Label text="{{ event_checkin | number }}" height="50" marginBottom="5" className="counter-value" />
+          <Label text="TOTAL CHECK INS" className="counter-title" />
+        </StackLayout>
+      </GridLayout>
+    </GridLayout>
+    <!-- Scan Action Message -->
+      <!-- Error Message -->
+      <GridLayout row="2" rowSpan="2" className="error-scan" tap="{{ enableScan }}" visibility="{{ isErrorScan ? 'visible' : 'collapsed' }}">
+        <StackLayout orientation="vertical" verticalAlignment="center" color="white">
+          <Label text="&#xf056;" className="fa" horizontalAlignment="center" marginBottom="25" fontSize="90" />
+          <Label text="Ticket ungültig" className="scan-message" horizontalAlignment="center" textAlign="center" width="200" textWrap="true" />
+        </StackLayout>
+      </GridLayout>
+      <!-- Success Message -->
+      <GridLayout row="2" rowSpan="2" className="success-scan" tap="{{ enableScan }}" visibility="{{ isSuccessScan ? 'visible' : 'collapsed' }}">
+        <StackLayout orientation="vertical" verticalAlignment="center" color="white">
+          <Label text="&#xf00c;" className="fa" horizontalAlignment="center" marginBottom="25" fontSize="90" />
+          <Label text="Person eingecheckt" className="scan-message" horizontalAlignment="center" textAlign="center" width="250" textWrap="true" />
+        </StackLayout>
+      </GridLayout>
+    <!-- Footer Bar -->
+    <GridLayout row="4" columns="15, *, 45, 10, 45, 15" backgroundColor="#4a4a4a">
+      <GridLayout col="1">
+        <StackLayout orientation="vertical" verticalAlignment="center" className="session-info">
+          <Label text="{{ account.name | uppercase }}" visibility="{{ account.name ? 'visible' : 'collapsed' }}" />
+          <Label text="{{ account.user.company }}" visibility="{{ account.user.company ? 'visible' : 'collapsed' }}" />
+        </StackLayout>
+      </GridLayout>
+      <GridLayout col="2" verticalAlignment="center">
+        <Button tap="{{ toggleEnableSound }}" className="{{ !isSoundEnable ? 'fa btn btn-icon btn-default btn-rounded-sm' : 'fa btn btn-icon btn-success btn-rounded-sm'}}" text="&#xf0a1;" margin="0" />
+      </GridLayout>
+      <GridLayout col="4" verticalAlignment="center">
+        <Button tap="logoutButtonTap" className="fa btn btn-icon btn-danger btn-rounded-sm btn-active" text="&#xf011;" margin="0" />
+      </GridLayout>
+    </GridLayout>
+  </GridLayout>
+</Page>

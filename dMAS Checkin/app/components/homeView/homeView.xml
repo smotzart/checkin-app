@@ -1,0 +1,11 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded" id="homeViewScreen" cssClass="screen">
+
+    <StackLayout>
+      <label text="sdfsf"></label> 
+        <!-- additional view content -->
+        <!-- START_CUSTOM_CODE_homeView -->
+        <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+
+        <!-- END_CUSTOM_CODE_homeView -->
+    </StackLayout>
+</Page>

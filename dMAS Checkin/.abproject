@@ -1,0 +1,28 @@
+{
+  "ProjectName": "dMAS Checkin",
+  "ProjectGuid": "ae9466d7-884e-4a1d-868c-528caf46a8f0",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.dMASCheckin",
+  "DisplayName": "dMAS für Veranstalter",
+  "Author": "Serhii Kotsar",
+  "Description": "dMAS für Veranstalter",
+  "BundleVersion": "1.02",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{F0A65104-D4F4-4012-B799-F612D75820F6}",
+  "AndroidPermissions": [
+    "android.permission.CAMERA",
+    "android.permission.INTERNET"
+  ],
+  "DeviceOrientations": [
+    "Portrait"
+  ],
+  "AndroidHardwareAcceleration": "true",
+  "iOSStatusBarStyle": "Default",
+  "FrameworkVersion": "3.1.3",
+  "Framework": "NativeScript"
+}

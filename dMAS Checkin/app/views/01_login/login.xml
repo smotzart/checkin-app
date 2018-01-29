@@ -1,0 +1,27 @@
+<Page 
+  xmlns="http://schemas.nativescript.org/tns.xsd"
+  ios:actionBarHidden="true" 
+  actionBarHidden="true"
+  navigatingTo="navigatingTo"
+>
+  <GridLayout rows="150, *">
+    <GridLayout backgroundColor="#aabe19" borderBottomWidth="1" borderBottomColor="#d6dabe">
+      <GridLayout rows="*, auto" columns="*, 285, *" borderBottomWidth="1" borderBottomColor="#919b4f">
+        <StackLayout row="1" col="1" orientation="vertical" paddingBottom="20">
+          <Image src="~/images/dMASLogo.png" width="56" height="16" stretch="aspectFill" horizontalAlignment="left" marginBottom="3" />
+          <Label text="für Veranstalter" color="#fff"></Label>
+        </StackLayout>
+      </GridLayout>
+    </GridLayout>
+    <GridLayout row="1" rows="30, *" columns="*, 285, *">
+      <StackLayout row="1" col="1">
+        <StackLayout className="form" marginBottom="15">
+          <TextField hint="Username" text="{{ username }}" className="input input-border input-rounded" marginBottom="10" autocapitalizationType="none" keyboardType="email" />
+          <TextField hint="Passwort" text="{{ password }}" className="input input-border input-rounded" secure="true" />
+        </StackLayout>
+        <Button margin="0" text="LOG IN" tap="loginButtonTap" className="btn btn-primary btn-rounded-sm btn-active" />       
+      </StackLayout>
+      <ActivityIndicator row="1" col="1" busy="{{ isLoading }}" />
+    </GridLayout>
+  </GridLayout>
+</Page>

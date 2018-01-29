@@ -1,0 +1,58 @@
+<Page 
+  xmlns="http://schemas.nativescript.org/tns.xsd" 
+  xmlns:Card="nativescript-cardview"
+  navigatingTo="navigatingTo"
+  ios:actionBarHidden="true" 
+  actionBarHidden="true"
+>
+  <GridLayout rows="50, *, 55">
+    <GridLayout row="0" backgroundColor="#aabe19" borderBottomWidth="1" borderBottomColor="#d6dabe">
+      <StackLayout padding="16 15 16 15" borderBottomWidth="1" borderBottomColor="#919b4f">
+        <Image src="~/images/dMASLogo.png" width="56" height="16" stretch="aspectFill" horizontalAlignment="left" />
+      </StackLayout>
+    </GridLayout>
+    <GridLayout row="1">
+      <ListView items="{{ events }}" padding="10 0" visibility="{{ !isLoading ? 'visible' : 'collapsed' }}" itemTemplateSelector="title ? 'title' : 'card'">
+        <ListView.itemTemplates>
+          <template key="title">
+            <StackLayout>
+              <Label text="{{ title }}" className="card-title" />
+            </StackLayout>
+          </template>
+          <template key="card">
+            <Card:CardView className="card" backgroundColor="#ffffff" elevation="7" radius="4" margin="7 10 7 10" tap="{{ goToEventView }}">
+              <GridLayout height="98" margin="0" columns="*, 20" padding="10 30">
+                <GridLayout row="0" col="0">
+                  <StackLayout orientation="vertical" verticalAlignment="center">
+                    <Label text="{{ event.name }}" className="card-name" />
+                    <Label text="{{ event.starts_at | startDate }}" className="card-date" />
+                  </StackLayout>
+                </GridLayout>
+                <GridLayout row="0" col="1">
+                  <StackLayout orientation="vertical" verticalAlignment="center">
+                    <Label text="&#xf054;" className="fa card-icon" />
+                  </StackLayout>
+                </GridLayout>
+              </GridLayout>
+            </Card:CardView>
+          </template>
+        </ListView.itemTemplates>
+      </ListView>
+      <ActivityIndicator busy="{{ isLoading }}" />
+    </GridLayout>
+    <GridLayout row="2" columns="15, *, 45, 10, 45, 15" backgroundColor="#4a4a4a">
+      <GridLayout col="1">
+        <StackLayout orientation="vertical" verticalAlignment="center" className="session-info">
+          <Label text="{{ account.name | uppercase }}" visibility="{{ account.name ? 'visible' : 'collapsed' }}" />
+          <Label text="{{ account.user.company }}" visibility="{{ account.user.company ? 'visible' : 'collapsed' }}" />
+        </StackLayout>
+      </GridLayout>
+      <GridLayout col="2" verticalAlignment="center">
+        <Button tap="{{ toggleEnableSound }}" className="{{ !isSoundEnable ? 'fa btn btn-icon btn-default btn-rounded-sm' : 'fa btn btn-icon btn-success btn-rounded-sm'}}" text="&#xf0a1;" margin="0" />
+      </GridLayout>
+      <GridLayout col="4" verticalAlignment="center">
+        <Button tap="logoutButtonTap" className="fa btn btn-icon btn-danger btn-rounded-sm btn-active" text="&#xf011;" margin="0" />
+      </GridLayout>
+    </GridLayout>
+  </GridLayout>
+</Page>
