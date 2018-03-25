@@ -20,6 +20,7 @@ var EventDetailModel = (function (_super) {
     this.barcodescanner = new BarcodeScanner();
     this.isSuccessScan = false;
     this.isErrorScan = false;
+    this.scanMessage = '';
   }
   Object.defineProperty(EventDetailModel.prototype, "event", {
     get: function () {
@@ -36,6 +37,19 @@ var EventDetailModel = (function (_super) {
   Object.defineProperty(EventDetailModel.prototype, "isScanAvailable", {
     get: function () {
       return this.barcodescanner.available();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventDetailModel.prototype, "scanMessage", {
+    get: function () {
+      return this._scanMessage;
+    },
+    set: function (value) {
+      if (this._scanMessage != value) {
+        this._scanMessage = value;
+        this.notifyPropertyChange("scanMessage", value);
+      }
     },
     enumerable: true,
     configurable: true
@@ -138,10 +152,12 @@ var EventDetailModel = (function (_super) {
           if (data.error) {
             throw data.error;
           }
+          _this.set("scanMessage", data.user.checkin_message);
           _this.set("isSuccessScan", true);
           _this.updateEvent();
           _this.endLoading();
         }).catch(function (error) {
+          _this.set("scanMessage", error);
           _this.set("isErrorScan", true);
           _this.endLoading();
         });

@@ -271,7 +271,13 @@ ListView {
 }
 .scan-message {
   font-family: 'SourceSansPro-SemiBold';
-  font-size: 45;
+  font-size: 26;
+  text-align: center;
+}
+.scan-message2 {
+  font-family: 'SourceSansPro-Light';
+  font-size: 16;
+  text-decoration: underline;
   text-align: center;
 }
 /* END_CUSTOM_CODE_nativeScriptApp */

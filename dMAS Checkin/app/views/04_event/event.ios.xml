@@ -50,15 +50,17 @@
       <!-- Error Message -->
       <GridLayout row="2" rowSpan="2" className="error-scan" tap="{{ enableScan }}" visibility="{{ isErrorScan ? 'visible' : 'collapsed' }}">
         <StackLayout orientation="vertical" verticalAlignment="center" color="white">
-          <Label text="&#xf056;" className="fa" horizontalAlignment="center" marginBottom="25" fontSize="90" />
-          <Label text="Ticket ungültig" className="scan-message" horizontalAlignment="center" textAlign="center" width="200" textWrap="true" />
+          <Label text="&#xf056;" className="fa" horizontalAlignment="center" marginBottom="20" fontSize="90" />
+          <Label text="Ticket ungültig" className="scan-message" horizontalAlignment="center" textAlign="center" width="200" textWrap="true" marginBottom="10" />
+          <Label text="{{ scanMessage }}" className="scan-message2" horizontalAlignment="center" textAlign="center" width="250" textWrap="true" />
         </StackLayout>
       </GridLayout>
       <!-- Success Message -->
       <GridLayout row="2" rowSpan="2" className="success-scan" tap="{{ enableScan }}" visibility="{{ isSuccessScan ? 'visible' : 'collapsed' }}">
         <StackLayout orientation="vertical" verticalAlignment="center" color="white">
-          <Label text="&#xf00c;" className="fa" horizontalAlignment="center" marginBottom="25" fontSize="90" />
-          <Label text="Person eingecheckt" className="scan-message" horizontalAlignment="center" textAlign="center" width="250" textWrap="true" />
+          <Label text="&#xf00c;" className="fa" horizontalAlignment="center" marginBottom="20" fontSize="90" />
+          <Label text="Person eingecheckt" className="scan-message" horizontalAlignment="center" textAlign="center" width="250" textWrap="true" marginBottom="10" />
+          <Label text="{{ scanMessage }}" className="scan-message2" horizontalAlignment="center" textAlign="center" width="250" textWrap="true" />
         </StackLayout>
       </GridLayout>
     <!-- Footer Bar -->
